@@ -1,0 +1,65 @@
+package com.rozgaarx.backend.entity;
+
+import com.rozgaarx.backend.entity.enums.VerificationStatus;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "workers")
+public class WorkerProfile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    private String skill;
+    private Integer experience;
+    private String location;
+    private Double latitude;
+    private Double longitude;
+    private String idProofUrl;
+
+    private Boolean isActive = false;
+
+    @Enumerated(EnumType.STRING)
+    private VerificationStatus verificationStatus = VerificationStatus.PENDING;
+
+    private Double walletBalance = 0.0;
+
+    public WorkerProfile() {}
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    
+    public String getSkill() { return skill; }
+    public void setSkill(String skill) { this.skill = skill; }
+    
+    public Integer getExperience() { return experience; }
+    public void setExperience(Integer experience) { this.experience = experience; }
+    
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
+    
+    public Double getLatitude() { return latitude; }
+    public void setLatitude(Double latitude) { this.latitude = latitude; }
+    
+    public Double getLongitude() { return longitude; }
+    public void setLongitude(Double longitude) { this.longitude = longitude; }
+    
+    public String getIdProofUrl() { return idProofUrl; }
+    public void setIdProofUrl(String idProofUrl) { this.idProofUrl = idProofUrl; }
+    
+    public Boolean getIsActive() { return isActive; }
+    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+    
+    public VerificationStatus getVerificationStatus() { return verificationStatus; }
+    public void setVerificationStatus(VerificationStatus verificationStatus) { this.verificationStatus = verificationStatus; }
+
+    public Double getWalletBalance() { return walletBalance; }
+    public void setWalletBalance(Double walletBalance) { this.walletBalance = walletBalance; }
+}
